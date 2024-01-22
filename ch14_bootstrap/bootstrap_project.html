@@ -8,7 +8,8 @@
 <body>
     <h2>회원가입</h2>
     아이디: <input type="text" id="id" onblur="id_check()"> <br>
-    비밀번호: <input type="text" id="password" onblur="password_check()"> <br>
+    비밀번호: <input type="text" id="password" onblur="pw_check()"> <br>
+    전화번호: <input type="text" id="phonenumber" onblur="ph_check()"> <br>
 
     <div class="form-group">
         <label for="gender">성별:</label>
@@ -50,7 +51,7 @@
     }
 
     // 영문 대/소문자(필수), 숫자(필수), 특수문자(!@#*) 8~10글자
-    const password_check = () => {
+    const pw_check = () => {
         const password = document.getElementById("password").value;
         console.log(password);
         // 정규식 정의 
@@ -60,6 +61,20 @@
             console.log("올바른 형식입니다.");
         } else {
             console.log("영문, 숫자, 특수문자를 조합하여 8~12자로 입력해주세요.");
+        }
+    }
+
+    // 전화번호 형식(000-0000-0000)
+    const ph_check = () => {
+        const phonenumber = document.getElementById("phonenumber").value;
+        console.log(phonenumber);
+        // 정규식 정의 
+        const exp = /^\d{3}-\d{4}-\d{4}$/;
+        // 정규식 만족여부 체크
+        if(phonenumber.match(exp)) {
+            console.log("올바른 전화번호 형식입니다.");
+        } else {
+            console.log("전화번호 형식이 올바르지 않습니다.");
         }
     }
 </script>
